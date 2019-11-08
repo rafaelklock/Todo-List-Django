@@ -1,0 +1,12 @@
+{% extends 'todolistapp/base.html' %}
+{% block content %}
+
+<form method="post">{% csrf_token %}
+    <p>Quer realmente deletar "{{ object }}"?</p>
+    <input class='btn btn-danger'  type="submit" value="Deletar">
+    <a href="/">
+    <input class='btn btn-primary' name="" type="button" value="Voltar">
+</a>
+</form>
+
+{% endblock %}
