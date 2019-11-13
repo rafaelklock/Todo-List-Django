@@ -11,7 +11,7 @@ class Todo(models.Model):
     closed_at = models.DateTimeField(blank=True, null=True)
 
     def get_absolute_url(self):
-        return reverse('todolistapp:todo_list', kwargs={'pk': self.pk})
+        return reverse('todolistapp:todo_list')
 
     def __str__(self):
         return self.todo

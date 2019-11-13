@@ -1,7 +1,8 @@
 {% extends 'todolistapp/base.html' %}
 {% block content %}
+{% load static %}
 
-<a href="/novo">
+<a href="{% url 'todolistapp:todo_new' %}">
     <input class='btn btn-primary' name="" type="submit" value="Novo">
 </a><br/><br/>
 
@@ -10,23 +11,31 @@
     <thead>
         <tr>
             <th>Todo</th>
-            <th>Done</th>
             <th>Editar</th>
             <th>Deletar</th>
         </tr>
     </thead>
     <tbody>
         {% for todo in object_list %}
-        <tr>
-            <td><a href="/{{ todo.id }}">{{ todo.todo }}</a></td>
-            <td>{{ todo.done }}</td>
-            <td><a href="edit/{{ todo.id }}"><i class="far fa-edit"></i></a></td>
-            <td><a href="delete/{{ todo.id }}"><i class="fas fa-trash-alt"></i></a></td>
-        </tr>
-        {% empty %}
-        <td> Nothing Here yet </td>
+            {% if todo.done == True %}
+            <tr id="tr_{{ todo.done }}">
+                <td ><a href="{% url 'todolistapp:todo_detail' todo.id %}"><strike>{{ todo.todo }}</strike></a></td>
+                <td><a href="edit/{{ todo.id }}"><i class="far fa-edit"></i></a></td>
+                <td><a href="delete/{{ todo.id }}"><i class="fas fa-trash-alt"></i></a></td>
+            </tr>
+            {% else %}
+            <tr id="tr_{{ todo.done }}">
+                <td><a href="/{{ todo.id }}">{{ todo.todo }}</a></td>
+                <td><a href="edit/{{ todo.id }}"><i class="far fa-edit"></i></a></td>
+                <td><a href="delete/{{ todo.id }}"><i class="fas fa-trash-alt"></i></a></td>
+            </tr>
+            {% endif %}
+            {% empty %}
+            <td> Nothing Here yet </td>
         {% endfor %}
     </tbody>
 </table>
+
+<script type="text/javascript" src="{% static "todolistapp/js/main.js" %}"></script>
 
 {% endblock %}
