@@ -25,7 +25,7 @@ SECRET_KEY = 'jvld@knpme7myyr8to*uu2mer@0dean(2n9r=(6jz#b*z#^8a%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['todoapp.segware.io', '201.86.50.250', '201.86.50.250:8080', 'localhost']
+ALLOWED_HOSTS = ['todoapp.segware.io', '201.86.50.250', '201.86.50.250:8080', 'localhost', '192.168.5.247']
 
 
 # Application definition
