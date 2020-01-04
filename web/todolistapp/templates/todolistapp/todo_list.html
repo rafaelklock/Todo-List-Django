@@ -11,8 +11,7 @@
     <thead>
         <tr>
             <th>Todo</th>
-            <th>Editar</th>
-            <th>Deletar</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -20,14 +19,18 @@
             {% if todo.done == True %}
             <tr id="tr_{{ todo.done }}">
                 <td ><a href="{% url 'todolistapp:todo_detail' todo.id %}"><strike>{{ todo.todo }}</strike></a></td>
-                <td><a href="edit/{{ todo.id }}"><i class="far fa-edit"></i></a></td>
-                <td><a href="delete/{{ todo.id }}"><i class="fas fa-trash-alt"></i></a></td>
+                <td>
+                  <a href="edit/{{ todo.id }}"><i class="far fa-edit"></i></a>
+                  <a href="delete/{{ todo.id }}"><i class="fas fa-trash-alt"></i></a>
+                </td>
             </tr>
             {% else %}
             <tr id="tr_{{ todo.done }}">
                 <td><a href="/{{ todo.id }}">{{ todo.todo }}</a></td>
-                <td><a href="edit/{{ todo.id }}"><i class="far fa-edit"></i></a></td>
-                <td><a href="delete/{{ todo.id }}"><i class="fas fa-trash-alt"></i></a></td>
+                <td>
+                  <a href="edit/{{ todo.id }}"><i class="far fa-edit"></i></a>
+                  <a href="delete/{{ todo.id }}"><i class="fas fa-trash-alt"></i></a>
+                </td>
             </tr>
             {% endif %}
             {% empty %}
